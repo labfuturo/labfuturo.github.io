@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logado</title>
+</head>
+<body>
+    <h1>Estou logado!</h1>
+    <button onclick="logout()">Logout</button>
+    <!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- jQuery -->
+    <script src="./plugins/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            const token = sessionStorage.getItem('token') || localStorage.getItem('token')
+
+            if(!token)
+                window.location.replace("./login.html");
+        })
+        const logout = async () => {
+            try {
+                const result = await axios({
+                    method: 'post',
+                    url: `http://localhost:4010/logout/`,
+                    headers: {'Authorization': sessionStorage.getItem('token') || localStorage.getItem('token')}
+                })
+                sessionStorage.removeItem('token')
+                localStorage.removeItem('token')
+                
+                window.location.replace("./login.html");
+            } catch (error) {
+                console.error(error)
+            }
+            
+        }
+        
+    </script>
+</body>
+</html>

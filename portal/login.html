@@ -24,9 +24,9 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Faça login para iniciar</p>
 
-      <form action="" method="post">
+      <form>
         <div class="input-group mb-3">
-          <input type="dre" class="form-control" placeholder="DRE">
+          <input id='dre' type="text" class="form-control" placeholder="DRE">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-address-card"></span>
@@ -34,10 +34,17 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Senha">
+          <input id='password' type="password" class="form-control" placeholder="Senha">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div id="errorLoginMessage" class="row" hidden="true">
+          <div class="col">
+            <div class="alert alert-danger">
+              <span >DRE ou senha incorretos</span>
             </div>
           </div>
         </div>
@@ -81,8 +88,12 @@
 </div>
 <!-- /.login-box -->
 
+<!-- Axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <!-- jQuery -->
 <script src="./plugins/jquery/jquery.min.js"></script>
+<!-- Login -->
+<script src="./js/submitLogin.js"></script>
 <!-- Bootstrap 4 -->
 <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
